@@ -15,6 +15,15 @@
       aria-valuenow="<%= @todo_list.percent_complete %>" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
 
+  <%= form_for([@todo_list, @todo_item]) do |f| %>
+  <div class="input-group mb-4">
+    <%= f.text_field :description, class: 'form-control', placeholder: "Add a todo item" %>
+    <div class="input-group-append">
+      <%= f.submit "Add", class: "btn btn-primary input-group-btn" %>
+    </div>
+  </div>
+  <% end %>
+
   <ul class="list-group">
     <% @todo_list.todo_items.each do |todo_item| %>
     <% if todo_item.completed? %>
